@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var socket = io.connect('54.200.16.244', {port: 4000});
+  var socket = window.socket = io.connect('54.200.16.244', {port: 4000});
   
   socket.on('connect', function(){
 	console.log("connect");

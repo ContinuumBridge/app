@@ -64,17 +64,23 @@
             className: 'span4',
             template: '#devicesWrapperTemplate',
 
-			/*
+			
             events: {
-                //'click': 'eventWrapperClick',
+                'click #connect-device': 'connectDevice',
                 //'click #interest-button': 'interestButtonClick',
             },
-			*/
+			
             initialize: function() {
 
                 _.bindAll(this, 'render');
 
 
+            },
+            
+            connectDevice: function() {
+            	
+            	alert('connectDevice was clicked');
+            	
             },
 
             beforeRender: function() {
