@@ -1,43 +1,161 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf8">
-  <title>My Steroids App</title>
-
-  <link rel="stylesheet" href="vendor/topcoat/css/topcoat-mobile-light.css" />
-  <link rel="stylesheet" href="stylesheets/application.css" />
-
-  <script src="javascripts/onerror.js"></script>
-  <script src="javascripts/console.log.js"></script>
-
-  <!-- cordova.js is served from localhost to ensure the correct version -->
-  <script src="http://localhost/appgyver/cordova.js"></script>
-  <script src="components/steroids-js/steroids.js"></script>
-
-  <script src="javascripts/application.js"></script>
-</head>
-<body>
-  <div class="content-padded">
-
-    <h1>Welcome to Steroids!</h1>
-
-    <p>Awesome! This file is located at <strong>www/index.html</strong> &mdash; open it, change some text, save the file, and press enter in the Terminal window running <strong>$ steroids connect</strong>. The changes are updated to all connected devices. Cool, ain't it?</p>
-
-    <h2>Using AppGyver Scanner</h2>
-
-    <p>To restart your current app or scan another app, <strong>tap and hold on the screen with three fingers (one finger on Android)</strong>.</p>
+	<meta charset="utf8">
+	<title>VennYou - Social Student Discount Nightlife</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+	<!-- Styles -->
+	<link rel="stylesheet" href="static/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="static/css/theme.css">
+	<link rel="stylesheet" type="text/css" href="static/css/events.css">
+	<link rel="stylesheet" href="stylesheets/index.css" type="text/css" media="screen" />
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="static/css/lib/animate.css" media="screen, projection">    
+	
+	<link rel="stylesheet" href="vendor/topcoat/css/topcoat-mobile-light.css" />
+	<link rel="stylesheet" href="stylesheets/application.css" />
+	
+	<!-- Scripts -->
+	<!-- cordova.js is served from localhost to ensure the correct version -->
+	<script src="http://localhost/appgyver/cordova.js"></script>
+	<script src="components/steroids-js/steroids.js"></script>
+	
+    <script src="static/js/jquery-1.9.1.js"></script>
+    <script src="static/js/jquery.cookie.js"></script>
+    <script src="static/js/underscore.js"></script>
+    <script src="static/js/socket.io.js"></script>
+    <script src="static/js/backbone.js"></script>
+    <script src="static/js/backbone-relational.js"></script>
+    <script src="static/js/backbone.layoutmanager.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/theme.js"></script>
+    <script src="static/js/svg.min.js"></script>
+    <script src="static/js/svg.import.min.js"></script>
+    <script src="static/js/humanize.js"></script>
+    <script src="static/js/date.js"></script>
+    <script src="static/js/ICanHaz.js"></script>
+    <script src="static/js/greensock-v12-js/minified/TweenLite.min.js"></script>
+    <script src="static/js/greensock-v12-js/minified/plugins/CSSPlugin.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     
-    <p>On iOS, this opens the Scanner context menu. On Android, the Scanner app is closed &mdash; open it again to scan another app or re-open your previous app.</p>
+	<script src="static/js/onerror.js"></script>
+	<script src="static/js/console.log.js"></script>
+	
+	<script>
+      PAGE_API = "http://54.200.16.244:8000/api/v1/event/";
 
-    <h2>Start the tutorial</h2>
-    <p>Let's spend a few minutes on a short tutorial. Go to your Steroids project directory and run the command:</p>
+      app = {loaded: true};
 
-    <p><strong>$ steroids generate tutorial begin</strong></p>
+    </script>
+    
+    <script type="application/javascript" charset="utf-8">
 
-    <h2>Get in touch with us!</h2>
+		
+    </script>
 
-    <p>Feel free to contact us at <a href="mailto:contact@appgyver.com">contact@appgyver.com</a>, we would love to get your feedback!</p>
+	<!--<script src="javascripts/application.js"></script>--> 
+	
+	<!--<script src="static/js/cb/app-phonegap.js"></script>--> 
+    <script src="static/js/cb/apps/models.js"></script>
+    <script src="static/js/cb/devices/models.js"></script>
+    <script src="static/js/cb/apps/views.js"></script>
+    <script src="static/js/cb/devices/views.js"></script>
+    <script src="static/js/cb/views.js"></script>
+    <script src="static/js/cb/router.js"></script>
+    
+    <script src="static/js/cb/cb-socket.js"></script>
+    
+    <script type="text/html" id="appTemplate">
+	    <!-- Event --> 
+		<div id="event-overlay" class="event-overlay"></div>
+		<div id="venn-wrapper" class="venn-wrapper">
+			<div id="venn-content" class="venn-diagram"></div>
+			<div id="venn-svg" class="venn-diagram"></div>
+			<div id="venn-overlay" class="venn-diagram"></div>
+			<div id="venn-images" class="venn-diagram"></div>
+			<div id="venn-canvas" class="venn-diagram"></div>
+		</div>
+		<div id="location-wrapper" class="location-wrapper">
+		</div>
+    </script>
 
-  </div>
-</body>
+    <script type="text/template" id="appListTemplate">
+    	appListTemplate
+    </script>
+    
+    <script type="text/template" id="appsWrapperTemplate">
+    	<h2>Apps</h2>
+    	<div id="appList"></div>
+    	<div class="topcoat-button--cta center full" ontouchend="showAlert()">Download Apps</div></br>
+    </script>
+    
+    <script type="text/html" id="deviceTemplate">
+    	deviceTemplate
+    </script>
+    
+    <script type="text/template" id="deviceListTemplate">
+		deviceListTemplate
+    </script>
+    
+    <script type="text/template" id="devicesWrapperTemplate">
+		<h2>Devices</h2>
+    	<div id="deviceList"></div>
+    	<div class="topcoat-button--cta center full" ontouchend="showAlert()">Connect to a Device</div></br>
+    </script>
+    
+    <script type="text/template" id="homeTemplate">
+        <div id="apps"></div>
+        <div id="devices"></div>
+    </script>
+    
+</head>
+<body class="pull_top">
+	<div class="navbar transparent navbar-inverse navbar-fixed-top">
+		  <div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="index.html">
+					<strong>CB</strong>
+				</a>
+				
+				<div class="nav-collapse collapse">
+					<ul class="nav pull-right">
+	
+						
+						<li class="selected">
+							<a href="/">Configuration</a>
+							
+						</li>
+						
+						<li class="sibling">
+							<a href="/en/events/">About Continuum Bridge</a>
+							
+						</li> 
+						
+	
+					</ul>
+				</div>
+		  </div>
+		</div>
+	</div>
+	<div id="app" class="container">
+		<div id="filter" class="btn-group">
+          <button class="btn">Today</button>
+          <button class="btn">Tomorrow</button>
+          <button class="btn">Later</button>
+        </div>
+		<a href="./notificationExample.html"> Notifications</a></br>
+		<a href="./deviceExample.html"> Device</a></br>
+		<a href="./geolocationExample.html"> Geolocation</a></br>
+		
+	
+	</div>
+  </body>
 </html>

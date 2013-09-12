@@ -1,0 +1,92 @@
+(function($){
+
+	$(document).ready(function() {
+		/*
+		window.DeviceView = Backbone.Layout.extend({
+            
+            className: 'device span4 first',
+            template: '#deviceTemplate',
+
+
+            events: {
+                //'click': 'eventWrapperClick',
+                //'click #interest-button': 'interestButtonClick',
+            },
+
+            initialize: function() {
+
+                _.bindAll(this, 'render');
+
+
+            },
+
+            beforeRender: function() {
+                 
+
+
+
+
+            },
+
+        });
+        
+        window.DeviceListView = Backbone.Layout.extend({
+            
+            tagName: 'section',
+            className: 'list',
+            template: '#deviceList',
+
+            initialize: function() {
+                _.bindAll(this, 'render');
+                this.collection.bind('reset', this.render);
+                
+            },
+
+            beforeRender: function() {
+
+                collection = this.collection;
+
+                this.collection.each(function(device) {
+                    this.insertView(new ListVEventView({
+                        model: device,
+                        collection: collection,
+                    }));
+                }, this);
+            },
+
+        });
+        
+	});
+	*/
+	window.DevicesWrapperView = Backbone.Layout.extend({
+            
+            id: 'devicesWrapper',
+            className: 'span4',
+            template: '#devicesWrapperTemplate',
+
+			/*
+            events: {
+                //'click': 'eventWrapperClick',
+                //'click #interest-button': 'interestButtonClick',
+            },
+			*/
+            initialize: function() {
+
+                _.bindAll(this, 'render');
+
+
+            },
+
+            beforeRender: function() {
+                /*
+				this.deviceList = this.setView('#deviceList', new DeviceListView({
+					collection: window.deviceList,
+				}), true);
+				*/
+            },
+
+        });
+        
+	});
+
+})(jQuery);
