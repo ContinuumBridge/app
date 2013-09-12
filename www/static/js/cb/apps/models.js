@@ -14,7 +14,10 @@
 
     window.AppCollection = Backbone.Collection.extend({
         model: App,
-        url: 'http://54.200.16.244:8000/api/v1/app/',
+        //url: 'http://54.200.16.244:8000/api/v1/app/',
+        url: 'apps',
+  		socket:window.socket,
+
 
         parse : function(response){
             console.log('response was %s', response);
@@ -25,6 +28,7 @@
             console.log('Hello there');
         },
 
+		/*
         maybeFetch: function(options){
             // Helper function to fetch only if this collection has not been fetched before.
             if(this._fetched){
@@ -53,13 +57,14 @@
                 options.success && options.success(model);
                 return;
             }
-            /*            
-            model = new VEvent({
-                resource_uri: id
-            });
+                       
+            //model = new VEvent({
+            //    resource_uri: id
+            //});
 
-            model.fetch(options);*/
+            //model.fetch(options);
         }
+        */
 
     });
     
