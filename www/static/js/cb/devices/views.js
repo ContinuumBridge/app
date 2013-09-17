@@ -79,7 +79,10 @@
             
             connectDevice: function() {
             	
-            	alert('connectDevice was clicked');
+            	//alert('connectDevice was clicked');
+            	window.socket.emit('devices', 'connectDevice', function(data){
+					console.log(data);
+	   			});
             	
             },
 

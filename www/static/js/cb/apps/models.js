@@ -15,10 +15,13 @@
     window.AppCollection = Backbone.Collection.extend({
         model: App,
         //url: 'http://54.200.16.244:8000/api/v1/app/',
-        url: 'apps',
-  		socket:window.socket,
+        backend: 'apps',
+  		//socket: window.socket,
 
-
+		initialize: function() {
+			this.bindBackend();
+		},
+		
         parse : function(response){
             console.log('response was %s', response);
             return response.objects;
