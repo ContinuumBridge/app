@@ -43,7 +43,7 @@
 		//window.localStorage.removeItem("csrftoken");
 		//window.localStorage.removeItem("sessionid");
 		
-		authWindow = window.open('http://www.vennyou.co.uk/accounts/login/', '_blank', 'location=yes');
+		authWindow = window.open('http://54.200.16.244:8000/accounts/login/', '_blank', 'location=yes');
 		
 		authWindow.addEventListener('loadstop', window.injectSigninHeader);
 		//authWindow.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
@@ -89,16 +89,11 @@
 	
 	function onDeviceReady() {
 		
-		window.eventsList.fetch({ reset: true });
-		
-		
+		//window.eventsList.fetch({ reset: true });
 		
 		jQuery(function() {
 			
-			
-			
 			authProcess();
-			
 		});
 		//window.showAlert();
 		//navigator.geolocation.watchPosition(geolocationDataReceived, geolocationError, { enableHighAccuracy: true });

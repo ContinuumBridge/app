@@ -1,7 +1,7 @@
 (function($){
 
 	$(document).ready(function() {
-		/*
+		
 		window.DeviceView = Backbone.Layout.extend({
             
             className: 'device span4 first',
@@ -30,20 +30,21 @@
 
         });
         
-        window.DeviceListView = Backbone.Layout.extend({
+        
+    	window.DeviceListView = Backbone.Layout.extend({
             
             tagName: 'section',
             className: 'list',
-            template: '#deviceList',
+            template: '#deviceListTemplate',
 
             initialize: function() {
-                _.bindAll(this, 'render');
+                _.bindAll(this, 'beforeRender');
                 this.collection.bind('reset', this.render);
                 
             },
 
             beforeRender: function() {
-
+				
                 collection = this.collection;
 
                 this.collection.each(function(device) {
@@ -52,50 +53,50 @@
                         collection: collection,
                     }));
                 }, this);
+                
             },
 
-        });
+    	});
         
-	});
-	*/
-	window.DevicesWrapperView = Backbone.Layout.extend({
-            
-            id: 'devicesWrapper',
-            className: 'span4',
-            template: '#devicesWrapperTemplate',
+	
+		window.DevicesWrapperView = Backbone.Layout.extend({
+				
+			id: 'devicesWrapper',
+			className: 'span4',
+			template: '#devicesWrapperTemplate',
 
 			
-            events: {
-                'click #connect-device': 'connectDevice',
-                //'click #interest-button': 'interestButtonClick',
-            },
+			events: {
+				'click #connect-device': 'connectDevice',
+				//'click #interest-button': 'interestButtonClick',
+			},
 			
-            initialize: function() {
+			initialize: function() {
 
-                _.bindAll(this, 'render');
+				_.bindAll(this, 'render');
 
 
-            },
-            
-            connectDevice: function() {
-            	
-            	//alert('connectDevice was clicked');
-            	window.socket.emit('devices', 'connectDevice', function(data){
+			},
+			
+			connectDevice: function() {
+
+				//alert('connectDevice was clicked');
+				window.socket.emit('message', '{"cmd": "discover"}', function(data){
 					console.log(data);
-	   			});
-            	
-            },
+				});
+				
+			},
 
-            beforeRender: function() {
-                /*
+			beforeRender: function() {
+				
 				this.deviceList = this.setView('#deviceList', new DeviceListView({
 					collection: window.deviceList,
 				}), true);
-				*/
-            },
-
-        });
-        
+				
+			},
+	
+		});
+			
 	});
 
 })(jQuery);

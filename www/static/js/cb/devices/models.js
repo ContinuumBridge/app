@@ -1,9 +1,10 @@
 (function($){
 
 	window.Device = Backbone.RelationalModel.extend({
-
+		
         idAttribute: 'id',
-
+		backend: 'device',
+		
         initialize: function() {
             
             
@@ -14,7 +15,7 @@
 
     window.DeviceCollection = Backbone.Collection.extend({
         model: Device,
-        backend: 'devices',
+        backend: 'device',
 
 		initialize: function() {
 			this.bindBackend();

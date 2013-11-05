@@ -22,9 +22,10 @@
             },
 
             beforeRender: function() {
-                 
+                
 				this.apps = this.setView('#apps', new AppsWrapperView(), true);
 				this.devices = this.setView('#devices', new DevicesWrapperView(), true);
+				this.commands = this.setView('#commands', new CommandsView(), true);
 				
             },
 

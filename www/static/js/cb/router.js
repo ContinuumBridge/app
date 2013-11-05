@@ -101,10 +101,10 @@
         window.app = new VRouter();
         window.app.home();
         //Backbone.history.start();
-        Backbone.history.start({
-            pushState: true,
-            silent: app.loaded
-        });
+        //Backbone.history.start({
+        //    pushState: true,
+        //    silent: app.loaded
+        //});
     
     });
 

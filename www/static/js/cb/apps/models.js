@@ -6,7 +6,6 @@
 
         initialize: function() {
             
-            
         },
 
     }); 
@@ -15,7 +14,7 @@
     window.AppCollection = Backbone.Collection.extend({
         model: App,
         //url: 'http://54.200.16.244:8000/api/v1/app/',
-        backend: 'apps',
+        backend: 'app',
   		//socket: window.socket,
 
 		initialize: function() {
